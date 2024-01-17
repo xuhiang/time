@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h1 class="navbar">现在时间</h1>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .navbar{
+            position: fixed;
+            text-align: center;
+            top:0;
+            left:0;
+            font-size: 32px;
+            background-color: #fff;
+            color: #000;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('your_background_image.jpg');
+            background-size: cover;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .clock-container {
+            position: absolute;
+            top:50px;
+            width: 500px;
+            height: 490px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .clock-face {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .time-container {
+            font-size: 48px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .second {
+            animation: rotate  seconds linear infinite;
+        }
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="clock-container">
+        <div class="clock-face">
+            <div class="time-container">
+                <span class="hour">00</span>:<span class="minute">00</span>:<span class="second">00</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            document.querySelector('.time-container').innerHTML = `${hours}:${minutes}:${seconds}`;
+        }
+
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
